@@ -1,19 +1,19 @@
 console.log("X's and O's")
-// Change the background of a button if it is clicked. 
 
 const tileButtons = Array.from(document.querySelectorAll(".tile"))
-// console.log(tileButtons)
+
 let playerOne = "X";
 let playerTwo = "O";
 
 let currentPlayer = playerOne;
 
-let gameStatus = false;
+let gameStatus = false; // the game is not live until the user clicks the play button. 
 
 let playerOneWins = document.getElementById("player-1-wins")
 let drawWins = document.getElementById("draw-wins")
 let playerTwoWins = document.getElementById("player-2-wins")
 
+// variables which will amend the scoreboard divs
 let playerOneCount = 0;
 let playerTwoCount = 0;
 let drawCount = 0;
@@ -24,11 +24,6 @@ const resetBtn = document.querySelector(".clearBoard")
 const replayBtn = document.querySelector(".replayBtn")
 
 const gameWinMsg = document.querySelector("#winner")
-
-// console.log(resetBtn)
-// console.log(playerOneWins)
-// console.log(drawWins)
-// console.log(playerTwoWins)
 
 const tile0 = document.getElementById("0");
 const tile1 = document.getElementById("1");
@@ -42,29 +37,29 @@ const tile8 = document.getElementById("8");
 
 
 
-
-// functions to change tile text:
+// game function:
 const tilePlay = function(event){
-    if (gameStatus === true){
+    if (gameStatus === true){ // if the game is live, continue:
     if (event.target.textContent !== "X" && event.target.textContent !== "O"  
-    // if the tile doesn't have an X and doesn't have an O, then continue.
+    // if the tile doesn't have an X and doesn't have an O, then continue:
     ) {
             
-    event.target.textContent = currentPlayer;
-    clickSound.play();
+    event.target.textContent = currentPlayer; // change textContent of selected tile to the current player's icon.
+    clickSound.play(); // play a sound when any tile is clicked.
   
     if ((tile0.textContent === "X" && tile1.textContent === "X" && tile2.textContent === "X") || 
             (tile0.textContent === "O" && tile1.textContent === "O" && tile2.textContent === "O")) {
 
         if (currentPlayer === playerOne) {
-                playerOneCount = ++playerOneCount
-                playerOneWins.textContent = playerOneCount;             
-                showResult();
-                document.querySelector("#winner").textContent = `Player 1 wins!`
+                playerOneCount = ++playerOneCount // increase the player's score by one. 
+                playerOneWins.textContent = playerOneCount; // reflect the new score in the html.          
+                showResult(); // enable the game result pop up
+                document.querySelector("#winner").textContent = `Player 1 wins!` // update the content of the pop up to reflect the relevant player
         } else if (currentPlayer === playerTwo) {
-                showResult();
-                playerTwoCount = ++playerTwoCount
-                playerTwoWins.textContent = playerTwoCount; 
+                playerTwoCount = ++playerTwoCount // increase the player's score by one. 
+                playerTwoWins.textContent = playerTwoCount; // reflect the new score in the html.
+                showResult();// enable the game result pop up
+                document.querySelector("#winner").textContent = `Player 2 wins!` // update the content of the pop up to reflect the relevant player
         } 
     }
     else if (
@@ -183,15 +178,16 @@ const tilePlay = function(event){
 
 
 } 
-const drawScore = tileButtons.filter(function(word) {
-    return word.textContent;
-    }).length;
+// in the result of a draw: 
+const drawScore = tileButtons.filter(function(word) { 
+    return word.textContent; // use filter to find the content of the tileButtons array
+    }).length; // check the length of the new array
 
-    if (drawScore === 9){
-        showResult();
-        document.querySelector("#winner").textContent = `It's a draw!`
-        drawCount = ++drawCount
-        drawWins.textContent = drawCount; 
+    if (drawScore === 9){ // if the array containing the content of the tiles is 9       
+        drawCount = ++drawCount // increase the player's score by one. 
+        drawWins.textContent = drawCount; // reflect the new score in the html.  
+        showResult(); // // enable the game result pop up
+        document.querySelector("#winner").textContent = `It's a draw!` // update the content of the pop up to reflect the relevant player
     }
 
 // change player: 
@@ -220,18 +216,18 @@ tileButtons.forEach(function(button) {
 const clickSound = new Audio("pick-92276.mp3");
 const clearSound = new Audio("co-8-36493.mp3");
 
-// to re-set the game board:
+
 // function to clear the game board
 const clearBoard = function() {
-    gameStatus = true;
+    gameStatus = true; // activate the game
     tileButtons.forEach(function(tileButton){
-        tileButton.textContent = "";
+        tileButton.textContent = ""; // empty the contents of all tiles
     }) 
-    currentPlayer = playerOne;
-    document.querySelector("#player-1-name").style.backgroundColor = "#F48484" 
-    document.querySelector("#player-2-name").style.backgroundColor = "#86A3B8" 
-    document.querySelector(".popUp").style.display = "none";
-    clearSound.play();
+    currentPlayer = playerOne; // Player 1 should always go first
+    document.querySelector("#player-1-name").style.backgroundColor = "#F48484" // set the background of Player 1 on the scoreboard to indicate their turn
+    document.querySelector("#player-2-name").style.backgroundColor = "#86A3B8" // set the background of Player 2 on the scoreboard
+    document.querySelector(".popUp").style.display = "none"; // hide the result pop up
+    clearSound.play(); // play a sound when the board is cleared
 }
 
 
@@ -247,11 +243,10 @@ resetBtn.addEventListener("click", function() {
 startGame.addEventListener("click", clearBoard)
 
 // show score pop up:
-const showResult = function() {
+const showResult = function() { // when a game ends, show who won and offer a new game
     document.querySelector(".popUp").style.display = "block";
     gameStatus = false;
     }
-
 
 // pop up button to play again:
 document.querySelector(".replayBtn").addEventListener("click", clearBoard);
