@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This is my first project on the Software Engineering Immersive course with General Assembly. The task was to create a functioning tic tac toe game with features including a messages telling the user the outcome of the game and starting a new game without refreshing the page. A combination of HTML, CSS and JavaScript were used to create this project. 
+This was my first project on the Software Engineering Immersive course with General Assembly. The task was to create a functioning tic tac toe game with features including messages telling the user the outcome of the game and starting a new game without refreshing the page. A combination of HTML, CSS and JavaScript were used to create this project. 
 
-The project was set on Wednesday 29th March with six days to plan and execute a functioning game independently.  
+The project was set with six days to plan and execute a functioning game independently.  
 
 The final project can be found here:
 https://catherinen29.github.io/tictactoe/
@@ -21,6 +21,9 @@ The project includes the following files:
 ### Technologies Used
 
 The technologies used throughout the project were:
+- HTML
+- CSS
+- JavaScript
 - VS Code – to write and execute the code;
 - Notable – to plan and keep track of completed requirements;
 - Figma – to design the initial wireframe for the project;
@@ -66,8 +69,6 @@ I made notes throughout the project as my intentions changed and made checklists
 
 ## Build Process
 
-### JavaScript
-
 Moving forward from planning, I first needed to design the game board on HTML and then implement code which would keep track of where the user had clicked. This led to creating the main game function. As there could have been many ways to approach this, my initial thought process was to use a `for` loop to run over the contents of the tiles, however I soon realised this wouldn’t work and used a much more straightforward piece of code using the forEach function. 
 The main function considers different combinations of wins, and I applied if statements for each one. You can see a section of this here:
 
@@ -89,12 +90,7 @@ document.querySelector("#winner").textContent = `Player 2 wins!`
 }
 ```
 
-
-I struggled getting the project off the ground, however felt an enormous sense of pride once I had passed it and could move on to building up the game. 
-
-In addition to the winning combinations, there is always the chance of a draw. I particularly enjoy this piece of code as I wasn’t confident with some array methods before the project began whereas I can say this has now changed. 
-
-I created an array of all the tiles’ content and the length of that array determined whether there was a draw or not. This part of the code need to be after all the other combinations as it is possible for Player 1 to win on the final tile. 
+I created an array of all the tiles’ content and the length of that array determined whether there was a draw or not. This part of the code needed to be after all the other combinations as it is possible for Player 1 to win on the final tile. 
 
 ``` js
 const drawScore = tileButtons.filter(function(word) { 
@@ -111,7 +107,7 @@ The initial function that was written was fairly basic just clearing the board, 
 - Setting the status of the game to ‘true’;
 - Clearing the content of the tiles, ready for the next game;
 - Re-setting the current player to Player 1;
-- Indicating whose move is next, by changing background colors in the scoreboard;
+- Indicating whose move is next, by changing background colours in the scoreboard;
 - Hiding the message which is generated when a game ends.
 
 ```js 
@@ -129,11 +125,8 @@ document.querySelector(".popUp").style.display = "none";
 ```
 
 
-### CSS
-
 The appearance of the project remained pretty basic for the first few days, showing only the title, game board and the scoreboard. Once the basic functionality was implemented, I was able to tackle the CSS, which I really enjoyed. 
 
-One part of the CSS I am quite proud of is hovering over the re-set button and the color of the button and it’s inner element both change color. 
 
 
 ## Challenges
@@ -142,15 +135,20 @@ The project got off to a slow start because I had incredibly over-complicated my
 
 I found that researching different JavaScript methods and experimenting on how some of them worked helped with my progress here. 
 
-I am quite conscious that the JavaScript file is also especially not DRY, however during this project, I didn’t want to try changing my code once I had it implemented it to ensure that I had time to complete the rest of the project. I’m looking forward to being able to compress my coding so it functions and is not so lengthy. 
+I am quite conscious that the JavaScript file is also not DRY, however during this project, I didn’t want to try changing my code once I had implemented it to ensure that I had time to complete the rest of the project. I’m looking forward to being able to compress my coding so it functions and is not so lengthy. 
 
 
 I wanted to keep the design and layout of the game pretty stripped back which meant there were not too many issues on the CSS part of the project. I struggled somewhat with getting my buttons in the positions I wanted to, particularly when changing the format of one element led to the position of another element being affected. Some exploration on how different instructions work helped me overcome this and I am confident that I have a better understanding of how certain things work now. 
 
 ## Wins
 
-- Completing my first independent project – creating a game from scratch that works as it should and looks good!
-- I managed to bounce back from the early block I experienced and it didn't have huge impact on the result. 
+Completing my first independent project – creating a game from scratch that works as it should and looks good!
+
+I struggled getting the project off the ground, however felt an enormous sense of pride after bouncing back moving on to building up the game. 
+
+In addition to the winning combinations, there is always the chance of a draw. I particularly enjoyed this piece of code as I wasn’t confident with some array methods before the project began whereas I can say this has now changed. 
+
+One part of the CSS I am quite proud of is hovering over the re-set button and the color of the button and it’s inner element both change color. 
 
 ## Key takeaways
 
